@@ -10,5 +10,7 @@ Vagrant.configure(2) do |cnfg|
       prv.nested = true
       prv.memory = 4096
       prv.cpus = 2
+    end
+    mvm.vm.provision :shell, :inline => 'yum -y install wget git'
   end
 end
