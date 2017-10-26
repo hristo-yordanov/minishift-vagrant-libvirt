@@ -12,5 +12,6 @@ Vagrant.configure(2) do |cnfg|
       prv.cpus = 2
     end
     mvm.vm.provision :shell, :inline => 'yum -y install wget git'
+    mvm.vm.provision :shell, :inline => 'wget https://github.com/minishift/minishift/releases/download/v1.7.0/minishift-1.7.0-linux-amd64.tgz'
   end
 end
