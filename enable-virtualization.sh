@@ -1,2 +1,3 @@
 #!/bin/bash
-echo "Good morning, world."
+CPUINFO=/proc/cpuinfo
+echo $CPUINFO
