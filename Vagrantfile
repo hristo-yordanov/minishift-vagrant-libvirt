@@ -11,10 +11,13 @@ Vagrant.configure(2) do |cnfg|
       prv.memory = 4096
       prv.cpus = 2
     end
-    mvm.vm.provision :shell, :inline => "yum -y install wget git"
-    mvm.vm.provision :shell, :inline => "wget https://github.com/minishift/minishift/releases/download/v1.7.0/minishift-1.7.0-linux-amd64.tgz"
-    mvm.vm.provision :shell, :inline => "tar -zxf minishift-1.7.0-linux-amd64.tgz"
-    mvm.vm.provision :shell, :inline => "echo 'export PATH=$PATH:/home/vagrant/minishift-1.7.0-linux-amd64' >>/home/vagrant/.bashrc"
-    mvm.vm.provision :shell, :inline => "source /home/vagrant/.bashrc"
+#    mvm.vm.provision :shell, :inline => "yum -y install wget git"
+#    mvm.vm.provision :shell, :inline => "wget https://github.com/minishift/minishift/releases/download/v1.7.0/minishift-1.7.0-linux-amd64.tgz"
+#    mvm.vm.provision :shell, :inline => "tar -zxf minishift-1.7.0-linux-amd64.tgz"
+#    mvm.vm.provision :shell, :inline => "echo 'export PATH=$PATH:/home/vagrant/minishift-1.7.0-linux-amd64' >>/home/vagrant/.bashrc"
+#    mvm.vm.provision :shell, :inline => "source /home/vagrant/.bashrc"
+     config.vm.provision "ansible" do |ansible|
+    	ansible.playbook = "playbook.yml"
+     end
   end
 end
