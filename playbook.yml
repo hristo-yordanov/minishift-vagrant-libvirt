@@ -1,17 +1,17 @@
 ---
-- hosts: mnshft
-  tasks: 
-    
-    - name: download minishift
-        get_url:  
-          url: https://github.com/minishift/minishift/releases/download/v1.7.0/minishift-1.7.0-linux-amd64.tgz
-          dest: /home/vagrant
+- hosts: all
+  tasks:     
 
-    - name: extract minishift
-        unarchive:  
-          src: minishift-1.7.0-linux-amd64.tgz
-          dest: /home/vagrant
+    - name: download and extract minishift
+      unarchive:  
+        src: https://github.com/minishift/minishift/releases/download/v1.7.0/minishift-1.7.0-linux-amd64.tgz
+        dest: /home/vagrant
+        remote_src: yes
 
     - name: add minishift to the path
-        shell: echo 'export PATH=$PATH:/home/vagrant/minishift-1.7.0-linux-amd64' >>/home/vagrant/.bashrc
+      shell: echo 'export PATH=$PATH:/home/vagrant/minishift-1.7.0-linux-amd64' >>/home/vagrant/.bashrc
+
+    - name: source .bashrc
+      shell: source /home/vagrant/.bashrc
+
 
